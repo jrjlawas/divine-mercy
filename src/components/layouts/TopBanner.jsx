@@ -23,9 +23,7 @@ const TopBanner = () => {
                   </span>
                 </div>
                 <div className="top-content">
-                  <a href="mailto:info@disasterelief.com">
-                    info@disasterelief.com
-                  </a>
+                  <a href="mailto:info@disasterelief.com">info@glottii.com</a>
                 </div>
               </div>
               <div className="vl-header-top-icbox">
