@@ -3,16 +3,24 @@ frontend:
   phases:
     preBuild:
       commands:
+        # Install NVM (Node Version Manager)
+        - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+        # Load NVM
+        - export NVM_DIR="$HOME/.nvm"
+        - [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        # Install and use Node.js v20
         - nvm install 20
         - nvm use 20
+        - node -v
+        # Install dependencies
         - npm install
     build:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: dist # or build depending on Vite/React setup
+    baseDirectory: dist
     files:
-      - "**/*"
+      - '**/*'
   cache:
     paths:
       - node_modules/**/*
