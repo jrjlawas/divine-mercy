@@ -92,14 +92,14 @@ const Hero = () => {
           </Container>
         </div>
 
-        <div className="vl-hero-slider vl-hero-bg slick-slide slick-current slick-active">
-          {/* <div className="vl-hero-shape shape-1">
+        {/* <div className="vl-hero-slider vl-hero-bg slick-slide slick-current slick-active">
+          <div className="vl-hero-shape shape-1">
             <img src={hero1} alt="hero1" />
           </div>
           <div className="vl-hero-shape shape-2">
             <img src={hero2} alt="hero2" />
-          </div> */}
-          {/* <div className="vl-hero-social d-none d-lg-block">
+          </div>
+          <div className="vl-hero-social d-none d-lg-block">
             <h4 className="title">Follow Us:</h4>
             <div className="vl-hero-social-icon">
               <ul>
@@ -137,7 +137,7 @@ const Hero = () => {
                 </li>
               </ul>
             </div>
-          </div> */}
+          </div>
           <Container>
             <Row>
               <Col lg={7}>
@@ -169,7 +169,7 @@ const Hero = () => {
               <Col lg={5} />
             </Row>
           </Container>
-        </div>
+        </div> */}
       </Slider>
     </div>
   );
