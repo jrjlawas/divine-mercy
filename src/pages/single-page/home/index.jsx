@@ -17,10 +17,10 @@ const HomeSinglePage = () => {
       {/* <TopBanner /> */}
       <Header />
       <Hero />
-      <About />
+      {/* <About /> */}
       <Causes />
       <EventArea />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Gallery />
       <Team />
       <Blog />

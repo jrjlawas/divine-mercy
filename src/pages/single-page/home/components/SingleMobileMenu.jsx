@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import logo1 from "@/assets/img/divine-img/logos/logo80.jpg";
-import footerLogo1 from "@/assets/img/logo/vl-footer-logo-1.1.png";
+import footerLogo1 from "@/assets/img/divine-img/logos/logo80.jpg";
 import {
   FaArrowRight,
   FaBars,
