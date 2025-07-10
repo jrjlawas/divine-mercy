@@ -1,4 +1,4 @@
-import contactBg from "@/assets/img/breadcrumb/vl-contact-bg.png";
+import contactBg from "@/assets/img/divine-img/contact/contact1.jpg";
 import shapeImg1 from "@/assets/img/breadcrumb/breadcrumb-shape-1.1.png";
 import shapeImg2 from "@/assets/img/breadcrumb/breadcrumb-shape-1.2.png";
 import shapeImg3 from "@/assets/img/breadcrumb/breadcrumb-shape-1.3.png";
@@ -13,15 +13,6 @@ const Hero = () => {
         backgroundImage: `url(${contactBg})`,
       }}
     >
-      <div className="shape1">
-        <img src={shapeImg1} alt="shapeImg1" />
-      </div>
-      <div className="shape2">
-        <img src={shapeImg2} alt="shapeImg2" />
-      </div>
-      <div className="shape2">
-        <img src={shapeImg3} alt="shapeImg3" />
-      </div>
       <Container>
         <Row>
           <Col lg={12}>

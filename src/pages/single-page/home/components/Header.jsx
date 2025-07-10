@@ -27,27 +27,21 @@ const Header = () => {
                   <div className="main-menu">
                     <ul>
                       <li>
-                        <a href="#about">About</a>
+                        <a href="/">Home</a>
                       </li>
                       <li>
-                        <a href="#cause">Cause</a>
+                        <a href="/">Raffle Fundraiser</a>
                       </li>
                       <li>
-                        <a href="#event">Event</a>
+                        <a href="/contact">Church Construction</a>
                       </li>
                       <li>
-                        <a href="#gallery">Gallery</a>
-                      </li>
-                      <li>
-                        <a href="#blog">Blog</a>
-                      </li>
-                      <li>
-                        <a href="#contact">Contact</a>
+                        <a href="/contact">Contact Us</a>
                       </li>
                     </ul>
                   </div>
                   <div className="btn-area">
-                    <Link to="/pages/contact" className="header-btn1">
+                    <Link to="/contact" className="header-btn1">
                       Donate{" "}
                       <span>
                         <FaArrowRight />

@@ -2,6 +2,8 @@ import { lazy } from "react";
 
 // const Home = lazy(() => import('@/pages/multi-page/home'));
 const Home = lazy(() => import("@/pages/single-page/home"));
+const Construction = lazy(() => import("@/pages/divine-pages/construction"));
+const DivineContact = lazy(() => import("@/pages/divine-pages/contact"));
 const MultiPageAnimalRescue = lazy(() =>
   import("@/pages/multi-page/animal-rescue")
 );
@@ -70,6 +72,18 @@ const singlePageRoutes = [
     name: "multi-page-home",
     element: <SinglePageHome />,
   },
+  // Divine Mercy Routes
+  {
+    path: "/construction",
+    name: "multi-page-construction",
+    element: <Construction />,
+  },
+  {
+    path: "/contact",
+    name: "multi-page-contactsDivine",
+    element: <DivineContact />,
+  },
+
   {
     path: "/animal-rescue",
     name: "single-page-animal-rescue",

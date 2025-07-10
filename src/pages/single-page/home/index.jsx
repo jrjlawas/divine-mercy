@@ -14,16 +14,14 @@ import BackToTop from "@/components/BackToTop.jsx";
 const HomeSinglePage = () => {
   return (
     <>
-      {/* <TopBanner /> */}
       <Header />
       <Hero />
-      {/* <About /> */}
       <Causes />
-      <EventArea />
-      {/* <Testimonial /> */}
+      <About />
+      {/* <EventArea /> */}
       <Gallery />
-      <Team />
-      <Blog />
+      {/* <Team />
+      <Blog /> */}
       <CtaArea />
       <Footer />
       <BackToTop />

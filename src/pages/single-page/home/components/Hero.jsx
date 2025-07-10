@@ -51,7 +51,7 @@ const Hero = () => {
                     nurture a place for prayer, worship, and community life.
                   </p>
                   <div className="vl-hero-btn">
-                    <a href="/pages/contact" className="header-btn1">
+                    <a href="/contact" className="header-btn1">
                       Join The Effort{" "}
                       <span>
                         <FaArrowRight />

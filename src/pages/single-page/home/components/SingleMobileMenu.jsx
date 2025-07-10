@@ -51,27 +51,21 @@ const SingleMobileMenu = () => {
         <div className="mobile-nav mobile-nav1">
           <ul className="mobile-nav-list nav-list1">
             <li>
-              <a href="#about">About</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="#cause">Cause</a>
+              <a href="/contact">Raffle Fundraiser</a>
             </li>
             <li>
-              <a href="#event">Event</a>
+              <a href="/contact">Church Construction</a>
             </li>
             <li>
-              <a href="#gallery">Gallery</a>
-            </li>
-            <li>
-              <a href="#blog">Blog</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
+              <a href="/contact">Contact Us</a>
             </li>
           </ul>
           <div className="allmobilesection">
-            <Link to="/pages/contact" className="header-mobile-btn1">
-              Get Started{" "}
+            <Link to="/contact" className="header-mobile-btn1">
+              Join Us{" "}
               <span>
                 <FaArrowRight />
               </span>
