@@ -16,8 +16,8 @@ const HomeSinglePage = () => {
     <>
       <Header />
       <Hero />
-      <Causes />
       <About />
+      <Causes />
       {/* <EventArea /> */}
       <Gallery />
       {/* <Team />

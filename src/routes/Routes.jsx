@@ -4,6 +4,10 @@ import { lazy } from "react";
 const Home = lazy(() => import("@/pages/single-page/home"));
 const Construction = lazy(() => import("@/pages/divine-pages/construction"));
 const DivineContact = lazy(() => import("@/pages/divine-pages/contact"));
+const DivineRaffle = lazy(() => import("@/pages/divine-pages/raffle"));
+const DivineRaffleDetails = lazy(() =>
+  import("@/pages/divine-pages/raffleDetail")
+);
 const MultiPageAnimalRescue = lazy(() =>
   import("@/pages/multi-page/animal-rescue")
 );
@@ -72,7 +76,7 @@ const singlePageRoutes = [
     name: "multi-page-home",
     element: <SinglePageHome />,
   },
-  // Divine Mercy Routes
+  // Divine Mercy Routes --START
   {
     path: "/construction",
     name: "multi-page-construction",
@@ -83,7 +87,18 @@ const singlePageRoutes = [
     name: "multi-page-contactsDivine",
     element: <DivineContact />,
   },
+  {
+    path: "/raffle",
+    name: "multi-page-raffle",
+    element: <DivineRaffle />,
+  },
+  {
+    path: "/raffle-details",
+    name: "multi-page-raffle-details",
+    element: <DivineRaffleDetails />,
+  },
 
+  // Divine Mercy Routes --END
   {
     path: "/animal-rescue",
     name: "single-page-animal-rescue",

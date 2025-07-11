@@ -54,7 +54,7 @@ const SingleMobileMenu = () => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/contact">Raffle Fundraiser</a>
+              <a href="/raffle">Raffle Fundraiser</a>
             </li>
             <li>
               <a href="/contact">Church Construction</a>

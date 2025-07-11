@@ -8,9 +8,7 @@ import React, { useState, useEffect } from "react";
 
 const Causes = () => {
   const targetDate = "2025-07-15T18:00:00";
-
   const formatNumber = (num) => String(num).padStart(2, "0");
-
   const calculateTimeLeft = () => {
     const now = new Date();
     const end = new Date(targetDate);
@@ -76,7 +74,7 @@ const Causes = () => {
                 <img className="w-100" src={cause1} alt="cause1" />
                 <div className="btn-area casue-btn text-center">
                   {/* <Link to="/cause-single" className="header-btn1"> */}
-                  <Link to="#" className="header-btn1">
+                  <Link to="/raffle-details" className="header-btn1">
                     Buy Ticket{" "}
                     <span>
                       <FaArrowRight />
@@ -111,7 +109,7 @@ const Causes = () => {
                   {formatNumber(timeLeft.seconds)}s
                 </a>
                 <h3 className="title">
-                  <Link to="/cause-single">Jeep 4x4 - Fully Customized</Link>
+                  <Link to="/raffle-details">Jeep 4x4 - Fully Customized</Link>
                 </h3>
                 <p>
                   Take home this rugged and stylish ride built for any
@@ -132,7 +130,7 @@ const Causes = () => {
               <div className="vl-cause-thumb">
                 <img className="w-100" src={cause2} alt="cause2" />
                 <div className="btn-area casue-btn text-center">
-                  <Link to="/cause-single" className="header-btn1">
+                  <Link to="/raffle-details" className="header-btn1">
                     Buy Ticket{" "}
                     <span>
                       <FaArrowRight />
@@ -167,7 +165,7 @@ const Causes = () => {
                   {formatNumber(timeLeft.seconds)}s
                 </a>
                 <h3 className="title">
-                  <Link to="/cause-single">CFMoto 400cc</Link>
+                  <Link to="/raffle-details">CFMoto 400cc</Link>
                 </h3>
                 <p>
                   Experience freedom on the road with this powerful and sleek
@@ -188,7 +186,7 @@ const Causes = () => {
               <div className="vl-cause-thumb">
                 <img className="w-100" src={cause3} alt="cause3" />
                 <div className="btn-area casue-btn text-center">
-                  <Link to="/cause-single" className="header-btn1">
+                  <Link to="/raffle-details" className="header-btn1">
                     Buy Ticket{" "}
                     <span>
                       <FaArrowRight />
@@ -223,7 +221,7 @@ const Causes = () => {
                   {formatNumber(timeLeft.seconds)}s
                 </a>
                 <h3 className="title">
-                  <Link to="/cause-single">SM-50R Stand Mixer</Link>
+                  <Link to="/raffle-details">SM-50R Stand Mixer</Link>
                 </h3>
                 <p>
                   Perfect for passionate home bakers, this powerful stand mixer
