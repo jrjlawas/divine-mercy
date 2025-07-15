@@ -52,13 +52,13 @@ const Footer = () => {
               <div className="vl-footer-menu">
                 <ul>
                   <li>
-                    <a href="/contact">Raffle/Fundraiser</a>
+                    <a href="/contact">Raffle Fundraiser</a>
                   </li>
                   <li>
                     <a href="/contact">PPC-PFC</a>
                   </li>
                   <li>
-                    <a href="/contact">Church Updates</a>
+                    <a href="/church-construction">Church Construction</a>
                   </li>
                   <li>
                     <a href="/contact">Sagrada Familia Slurs</a>

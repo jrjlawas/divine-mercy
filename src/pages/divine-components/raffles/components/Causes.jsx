@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router";
 import React, { useState, useEffect } from "react";
 const Causes = () => {
-  const targetDate = "2025-07-15T18:00:00";
+  const targetDate = "2025-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
   const calculateTimeLeft = () => {
     const now = new Date();
