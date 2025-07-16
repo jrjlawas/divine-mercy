@@ -1,5 +1,5 @@
 import thumbImg from "@/assets/img/divine-img/raffle/raffle1.jpg";
-
+import { createGcashSource } from "../../../../api/gcash-payment";
 import customImg from "@/assets/img/icons/custom-amou.svg";
 import dollarImg from "@/assets/img/icons/dollar.svg";
 
@@ -11,7 +11,7 @@ const SideBar = () => {
   const prices = [10, 20, 30, 40, 50];
   const [value, setValue] = useState(10);
 
-  const targetDate = "2025-07-15T18:00:00";
+  const targetDate = "2025-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -41,6 +41,22 @@ const SideBar = () => {
   if (!timeLeft) {
     return <span>Time's up!</span>;
   }
+
+  const handlePay = async () => {
+    const res = await fetch(
+      "https://j8lq1xoukb.execute-api.ap-southeast-2.amazonaws.com/gcashpayment",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+
+        body: JSON.stringify(1000),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    return data;
+  };
+
   return (
     <div className="vl-sidebar-area sp2">
       <Container>
@@ -105,24 +121,6 @@ const SideBar = () => {
                         />
                         <label htmlFor="Offline">Credit/Debit Card</label>
                       </div>
-                      <div className="ofline">
-                        <input
-                          type="radio"
-                          id="Offline"
-                          name="fav_language"
-                          defaultValue="Offline"
-                        />
-                        <label htmlFor="Offline">PayMaya</label>
-                      </div>
-                      <div className="ofline">
-                        <input
-                          type="radio"
-                          id="Offline"
-                          name="fav_language"
-                          defaultValue="Offline"
-                        />
-                        <label htmlFor="Offline">PayPal</label>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -162,7 +160,7 @@ const SideBar = () => {
                   <div className="total-anoumt">
                     <div className="toal">
                       <div className="btn-area">
-                        <button className="header-btn1">
+                        <button className="header-btn1" onClick={handlePay}>
                           Pay Ticket{" "}
                           <span>
                             <FaArrowRight />
