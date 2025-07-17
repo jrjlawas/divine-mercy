@@ -52,12 +52,15 @@ const SideBar = () => {
         }
       );
       const data = await res.json();
+      const strdata = JSON.stringify(data);
+      console.error("Normal Data:", data);
+      console.error("Stringified Data:", strdata);
 
-      if (data.attributes.checkout_url) {
+      if (strdata.attributes.checkout_url) {
         // Redirect to checkout URL
-        window.location.href = data.attributes.checkout_url;
+        window.location.href = strdata.attributes.checkout_url;
       } else {
-        console.error("Checkout URL not found in response:", data);
+        console.error("Checkout URL not found in response:", strdata);
       }
     } catch (error) {
       console.error("Payment error:", error);
