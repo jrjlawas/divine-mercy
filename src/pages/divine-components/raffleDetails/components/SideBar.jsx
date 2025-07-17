@@ -41,20 +41,26 @@ const SideBar = () => {
   if (!timeLeft) {
     return <span>Time's up!</span>;
   }
-
   const handlePay = async () => {
-    const res = await fetch(
-      "https://j8lq1xoukb.execute-api.ap-southeast-2.amazonaws.com/gcashpayment",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify(1000),
+    try {
+      const res = await fetch(
+        "https://j8lq1xoukb.execute-api.ap-southeast-2.amazonaws.com/gcashpayment",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(1000),
+        }
+      );
+      const data = await res.json();
+      if (data.checkout_url) {
+        // Redirect to checkout URL
+        window.location.href = data.checkout_url;
+      } else {
+        console.error("Checkout URL not found in response:", data);
       }
-    );
-    const data = await res.json();
-    console.log(data);
-    return data;
+    } catch (error) {
+      console.error("Payment error:", error);
+    }
   };
 
   return (
