@@ -52,9 +52,10 @@ const SideBar = () => {
         }
       );
       const data = await res.json();
-      if (data.checkout_url) {
+
+      if (data.attributes.checkout_url) {
         // Redirect to checkout URL
-        window.location.href = data.checkout_url;
+        window.location.href = data.attributes.checkout_url;
       } else {
         console.error("Checkout URL not found in response:", data);
       }
