@@ -10,7 +10,14 @@ import { Col, Container, Row } from "react-bootstrap";
 const SideBar = () => {
   const prices = [10, 20, 30, 40, 50];
   const [value, setValue] = useState(10);
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({ visible: false, message: "", type: "" });
 
+  const showAlert = (message, type = "success") => {
+    setAlert({ visible: true, message, type });
+    // Hide alert automatically after 3 seconds
+    setTimeout(() => setAlert({ visible: false, message: "", type: "" }), 5000);
+  };
   const targetDate = "2025-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
   const calculateTimeLeft = () => {
@@ -29,6 +36,7 @@ const SideBar = () => {
       seconds: Math.floor((difference / 1000) % 60),
     };
   };
+
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   useEffect(() => {
     const timer = setInterval(() => {
@@ -42,6 +50,7 @@ const SideBar = () => {
     return <span>Time's up!</span>;
   }
   const handlePay = async () => {
+    setLoading(true);
     try {
       const res = await fetch(
         "https://j8lq1xoukb.execute-api.ap-southeast-2.amazonaws.com/gcashpayment",
@@ -56,11 +65,18 @@ const SideBar = () => {
 
       if (checkoutUrl) {
         // Redirect to checkout URL
+        setLoading(false);
         window.location.href = checkoutUrl;
       } else {
+        setLoading(false);
         console.error("Checkout URL not found in response:", checkoutUrl);
       }
     } catch (error) {
+      showAlert(
+        "Sorry! The payment gateway is currently not available.",
+        "error"
+      );
+      setLoading(false);
       console.error("Payment error:", error);
     }
   };
@@ -106,7 +122,7 @@ const SideBar = () => {
                     {formatNumber(timeLeft.seconds)}s
                   </div>
                 </Row>
-                <div className="space-div">
+                {/* <div className="space-div">
                   <div className="select-method">
                     <h4 className="title pb-32">Select Payment Method</h4>
                     <div className="select-meth">
@@ -131,48 +147,70 @@ const SideBar = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="donate-form">
-                  {/* <div className="select-method">
-                    <h4 className="title pb-32">Select Payment Method</h4>
-                  </div> */}
-                  <form action="#">
-                    <Row>
-                      <Col lg={6} md={6} className="mb-20">
-                        <input type="text" placeholder="First Name" />
-                      </Col>
-                      <Col lg={6} md={6} className="mb-20">
-                        <input type="text" placeholder="Last Name" />
-                      </Col>
-                      <Col lg={12} md={6} className="mb-20">
-                        <input type="email" placeholder="Email Address" />
-                      </Col>
-                      <Col lg={12} md={6} className="mb-20">
-                        <input type="text" placeholder="Address Line" />
-                      </Col>
+                  <div className="select-method">
+                    <h4 className="title pb-32">Billing Details</h4>
+                    <form action="#">
+                      <Row>
+                        <Col lg={6} md={6} className="mb-20">
+                          <input type="text" placeholder="First Name" />
+                        </Col>
+                        <Col lg={6} md={6} className="mb-20">
+                          <input type="text" placeholder="Last Name" />
+                        </Col>
+                        <Col lg={12} md={6} className="mb-20">
+                          <input type="email" placeholder="Email Address" />
+                        </Col>
+                        <Col lg={12} md={6} className="mb-20">
+                          <input type="text" placeholder="Address Line" />
+                        </Col>
 
-                      <Col lg={4} md={6} className="mb-20">
-                        <input type="text" placeholder="City" />
-                      </Col>
-                      <Col lg={4} md={6} className="mb-20">
-                        <input
-                          type="text"
-                          placeholder="State / Province / Region"
-                        />
-                      </Col>
-                      <Col lg={4} md={6} className="mb-20">
-                        <input type="text" placeholder="Zip / Postal Code" />
-                      </Col>
-                    </Row>
-                  </form>
+                        <Col lg={4} md={6} className="mb-20">
+                          <input type="text" placeholder="City" />
+                        </Col>
+                        <Col lg={4} md={6} className="mb-20">
+                          <input
+                            type="text"
+                            placeholder="State / Province / Region"
+                          />
+                        </Col>
+                        <Col lg={4} md={6} className="mb-20">
+                          <input type="text" placeholder="Zip / Postal Code" />
+                        </Col>
+                        <Col lg={12} md={6} className="mb-20">
+                          {alert.visible && (
+                            <div className={`alert-box ${alert.type}`}>
+                              {alert.message}
+                            </div>
+                          )}
+                        </Col>
+                      </Row>
+                    </form>
+                  </div>
+
                   <div className="total-anoumt">
                     <div className="toal">
                       <div className="btn-area">
                         <button className="header-btn1" onClick={handlePay}>
-                          Pay Ticket{" "}
+                          {/* Pay Ticket{" "}
                           <span>
                             <FaArrowRight />
-                          </span>
+                          </span> */}
+
+                          {loading ? (
+                            <>
+                              Loading
+                              <span className="spinner"></span>
+                            </>
+                          ) : (
+                            <>
+                              Pay Ticket{" "}
+                              <span>
+                                <FaArrowRight />
+                              </span>
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>
