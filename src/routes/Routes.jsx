@@ -8,7 +8,7 @@ const DivineRaffle = lazy(() => import("@/pages/divine-pages/raffle"));
 const ConstructionPage = lazy(() =>
   import("@/pages/divine-pages/construction")
 );
-
+const DonationPage = lazy(() => import("@/pages/divine-pages/donate"));
 const DivineRaffleDetails = lazy(() =>
   import("@/pages/divine-pages/raffleDetail")
 );
@@ -105,6 +105,11 @@ const singlePageRoutes = [
     path: "/church-construction",
     name: "multi-page-church-construction",
     element: <ConstructionPage />,
+  },
+  {
+    path: "/church-donate",
+    name: "multi-page-donate",
+    element: <DonationPage />,
   },
 
   // Divine Mercy Routes --END

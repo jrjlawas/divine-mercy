@@ -41,7 +41,7 @@ const Header = () => {
                     </ul>
                   </div>
                   <div className="btn-area">
-                    <Link to="/contact" className="header-btn1">
+                    <Link to="/church-donate" className="header-btn1">
                       Donate{" "}
                       <span>
                         <FaArrowRight />

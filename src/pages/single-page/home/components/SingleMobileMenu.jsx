@@ -64,8 +64,8 @@ const SingleMobileMenu = () => {
             </li>
           </ul>
           <div className="allmobilesection">
-            <Link to="/contact" className="header-mobile-btn1">
-              Join Us{" "}
+            <Link to="/church-donate" className="header-mobile-btn1">
+              Donate{" "}
               <span>
                 <FaArrowRight />
               </span>
