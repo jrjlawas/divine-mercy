@@ -14,11 +14,13 @@ const SideBar = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({ visible: false, message: "", type: "" });
 
+  //Toast Alert Functionality
   const showAlert = (message, type = "success") => {
     setAlert({ visible: true, message, type });
-    setTimeout(() => setAlert({ visible: false, message: "", type: "" }), 5000);
+    // setTimeout(() => setAlert({ visible: false, message: "", type: "" }), 5000);
   };
 
+  //Countdown Functionality
   const targetDate = "2025-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
   const timeLeft = CountDown(targetDate);
@@ -26,8 +28,25 @@ const SideBar = () => {
     return <span>Time's up!</span>;
   }
 
+  const [billing, setBilling] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+
+  //Payment Functionality
   const handlePay = async () => {
     setLoading(true);
+    const isEmpty = Object.values(billing).some((value) => value.trim() === "");
+    if (isEmpty) {
+      showAlert("Please fill in all billing details!", "error");
+      setLoading(false);
+      return;
+    }
     try {
       const res = await fetch(
         "https://j8lq1xoukb.execute-api.ap-southeast-2.amazonaws.com/gcashpayment",
@@ -43,7 +62,7 @@ const SideBar = () => {
         // setLoading(false);
         window.location.href = checkoutUrl;
       } else {
-        // setLoading(false);
+        setLoading(false);
         console.error("Checkout URL not found in response:", checkoutUrl);
       }
     } catch (error) {
@@ -96,61 +115,102 @@ const SideBar = () => {
                     {formatNumber(timeLeft.seconds)}s
                   </div>
                 </Row>
-                {/* <div className="space-div">
-                  <div className="select-method">
-                    <h4 className="title pb-32">Select Payment Method</h4>
-                    <div className="select-meth">
-                      <div className="online">
-                        <input
-                          type="radio"
-                          id="Online"
-                          name="fav_language"
-                          defaultValue="Online"
-                        />
-                        <label htmlFor="Online">GCash</label>
-                        <br />
-                      </div>
-                      <div className="ofline">
-                        <input
-                          type="radio"
-                          id="Offline"
-                          name="fav_language"
-                          defaultValue="Offline"
-                        />
-                        <label htmlFor="Offline">Credit/Debit Card</label>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="donate-form">
                   <div className="select-method">
                     <h4 className="title pb-32">Billing Details</h4>
                     <form action="#">
                       <Row>
                         <Col lg={6} md={6} className="mb-20">
-                          <input type="text" placeholder="First Name" />
+                          <input
+                            type="text"
+                            placeholder="First Name"
+                            value={billing.firstName}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                firstName: e.target.value,
+                              })
+                            }
+                          />
                         </Col>
                         <Col lg={6} md={6} className="mb-20">
-                          <input type="text" placeholder="Last Name" />
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            value={billing.lastName}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                lastName: e.target.value,
+                              })
+                            }
+                          />
                         </Col>
                         <Col lg={12} md={6} className="mb-20">
-                          <input type="email" placeholder="Email Address" />
+                          <input
+                            type="email"
+                            placeholder="Email Address"
+                            value={billing.email}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                email: e.target.value,
+                              })
+                            }
+                          />
                         </Col>
                         <Col lg={12} md={6} className="mb-20">
-                          <input type="text" placeholder="Address Line" />
+                          <input
+                            type="text"
+                            placeholder="Address Line"
+                            value={billing.address}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                address: e.target.value,
+                              })
+                            }
+                          />
                         </Col>
 
                         <Col lg={4} md={6} className="mb-20">
-                          <input type="text" placeholder="City" />
+                          <input
+                            type="text"
+                            placeholder="City"
+                            value={billing.city}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                city: e.target.value,
+                              })
+                            }
+                          />
                         </Col>
                         <Col lg={4} md={6} className="mb-20">
                           <input
                             type="text"
                             placeholder="State / Province / Region"
+                            value={billing.state}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                state: e.target.value,
+                              })
+                            }
                           />
                         </Col>
                         <Col lg={4} md={6} className="mb-20">
-                          <input type="text" placeholder="Zip / Postal Code" />
+                          <input
+                            type="text"
+                            placeholder="Zip / Postal Code"
+                            value={billing.zip}
+                            onChange={(e) =>
+                              setBilling({
+                                ...billing,
+                                zip: e.target.value,
+                              })
+                            }
+                          />
                         </Col>
                         <Col lg={12} md={6} className="mb-20">
                           {alert.visible && (
