@@ -2,38 +2,19 @@ import { causesData } from "../data";
 import { FaAngleLeft, FaAngleRight, FaArrowRight } from "react-icons/fa6";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router";
+import TruncatedParagraph from "../../functions/wordLimiter";
+import CountDown from "../../functions/countDown";
 import React, { useState, useEffect } from "react";
 const Causes = () => {
   const targetDate = "2025-12-25T18:00:00";
-  const formatNumber = (num) => String(num).padStart(2, "0");
-  const calculateTimeLeft = () => {
-    const now = new Date();
-    const end = new Date(targetDate);
-    const difference = end - now;
-
-    if (difference <= 0) {
-      return null;
-    }
-
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-  };
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
+  const timeLeft = CountDown(targetDate);
   if (!timeLeft) {
     return <span>Time's up!</span>;
   }
+  const formatNumber = (num) => String(num).padStart(2, "0");
+
+  const longText =
+    "Take home this rugged and stylish ride built for any adventure! Every ticket you purchase brings you closer to winning—and helps fund the construction of Divine Mercy Church in Libertad, Ormoc, Leyte, Philippines.";
 
   return (
     <section className="vl-cause-inner sp2">
@@ -85,7 +66,9 @@ const Causes = () => {
                   <h3 className="title">
                     <Link to="/raffle-details">{item.title}</Link>
                   </h3>
-                  <p>{item.description}</p>
+                  <p>
+                    <TruncatedParagraph text={item.description} limit={80} />
+                  </p>
                 </div>
               </div>
             </Col>

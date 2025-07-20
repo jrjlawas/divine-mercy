@@ -1,7 +1,7 @@
-import Header from "../../single-page/home/components/Header";
+import Header from "../../divine-components/header";
 import RaffleDetailsPage from "../../divine-components/raffleDetails";
-import CtaArea from "@/components/layouts/CtaArea";
-import Footer from "@/components/layouts/Footer";
+import CtaArea from "../../divine-components/cta";
+import Footer from "../../divine-components/footer";
 import BackToTop from "@/components/BackToTop.jsx";
 
 const DivineRaffleDetails = () => {
@@ -9,7 +9,6 @@ const DivineRaffleDetails = () => {
     <>
       <Header />
       <RaffleDetailsPage />
-      {/* <RafflesPage /> */}
       <CtaArea />
       <Footer />
       <BackToTop />

@@ -3,6 +3,7 @@ import { createGcashSource } from "../../../../api/gcash-payment";
 import customImg from "@/assets/img/icons/custom-amou.svg";
 import dollarImg from "@/assets/img/icons/dollar.svg";
 
+import CountDown from "../../functions/countDown";
 import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { Col, Container, Row } from "react-bootstrap";
@@ -15,40 +16,16 @@ const SideBar = () => {
 
   const showAlert = (message, type = "success") => {
     setAlert({ visible: true, message, type });
-    // Hide alert automatically after 3 seconds
     setTimeout(() => setAlert({ visible: false, message: "", type: "" }), 5000);
   };
+
   const targetDate = "2025-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
-  const calculateTimeLeft = () => {
-    const now = new Date();
-    const end = new Date(targetDate);
-    const difference = end - now;
-
-    if (difference <= 0) {
-      return null;
-    }
-
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-  };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
+  const timeLeft = CountDown(targetDate);
   if (!timeLeft) {
     return <span>Time's up!</span>;
   }
+
   const handlePay = async () => {
     setLoading(true);
     try {
@@ -62,13 +39,11 @@ const SideBar = () => {
       );
       const data = await res.json();
       const checkoutUrl = data?.data?.attributes?.checkout_url;
-
       if (checkoutUrl) {
-        // Redirect to checkout URL
-        setLoading(false);
+        // setLoading(false);
         window.location.href = checkoutUrl;
       } else {
-        setLoading(false);
+        // setLoading(false);
         console.error("Checkout URL not found in response:", checkoutUrl);
       }
     } catch (error) {
@@ -77,7 +52,6 @@ const SideBar = () => {
         "error"
       );
       setLoading(false);
-      console.error("Payment error:", error);
     }
   };
 

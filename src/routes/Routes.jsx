@@ -1,7 +1,8 @@
 import { lazy } from "react";
 
 // const Home = lazy(() => import('@/pages/multi-page/home'));
-const Home = lazy(() => import("@/pages/single-page/home"));
+// const Home = lazy(() => import("@/pages/single-page/home"));
+const Home = lazy(() => import("@/pages/divine-pages/home"));
 const Construction = lazy(() => import("@/pages/divine-pages/construction"));
 const DivineContact = lazy(() => import("@/pages/divine-pages/contact"));
 const DivineRaffle = lazy(() => import("@/pages/divine-pages/raffle"));
