@@ -38,7 +38,7 @@ const Hero = () => {
                 <div className="vl-hero-section-title">
                   <h5 className="vl-subtitle">
                     <span>
-                      <img src={titleIcon} alt="titleIcon" />
+                      <img src={titleIcon} alt="titleIcon" loading="lazy" />
                     </span>{" "}
                     Building Faith, Together
                   </h5>

@@ -149,7 +149,7 @@ const Footer = () => {
                     <a href="#">Terms &amp; Conditions</a>
                   </li>
                   <li>
-                    <a href="#">Admin</a>
+                    <a href="/church-login">Admin</a>
                   </li>
                 </ul>
               </div>
