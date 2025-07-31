@@ -5,7 +5,7 @@ import shapeImg3 from "@/assets/img/breadcrumb/breadcrumb-shape-1.3.png";
 import { FaAngleRight } from "react-icons/fa6";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router";
-const Hero = ({ user }) => {
+const Hero = ({ user, onNavigate }) => {
   const u = JSON.parse(user);
   return (
     <section
@@ -21,11 +21,15 @@ const Hero = ({ user }) => {
               <h4 className="heading">Welcome Administrator</h4>
               <div className="vl-breadcrumb-list">
                 <span>
-                  <Link to="/">Raffle Lists</Link>
+                  <Link onClick={() => onNavigate("list")}>Raffle Lists</Link>
                 </span>
-                <span className="dvir">
-                  /{/* <FaAngleRight className="fa-solid fa-angle-right" /> */}
+                <span className="dvir">/</span>
+                <span>
+                  <Link onClick={() => onNavigate("register")}>
+                    Register Raffle
+                  </Link>
                 </span>
+                <span className="dvir">/</span>
                 <span>
                   <a className="active" href="#">
                     Events
