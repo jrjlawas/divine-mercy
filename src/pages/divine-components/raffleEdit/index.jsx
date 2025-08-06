@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 
+import { getRaffleLists } from "../../../api/rafflesList";
 import { registerRaffle } from "../../../api/rafflesRegister";
 
 const RaffleEdit = ({ id }) => {
@@ -57,6 +58,57 @@ const RaffleEdit = ({ id }) => {
     TITLE: "",
     YT_LIVE: "",
   });
+
+  useEffect(() => {
+    const getLists = async () => {
+      try {
+        const data = await getRaffleLists();
+        const raffle = data.find((r) => r.itemCode === id);
+        if (raffle) {
+          setFormData({
+            itemCode: id,
+            DESCR1: raffle.DESCR1 || "",
+            DESCR2: raffle.DESCR2 || "",
+            DESCR3: raffle.DESCR3 || "",
+            DRAW_DT: raffle.DRAW_DT || "",
+            FB_LIVE: raffle.FB_LIVE || "",
+            IS_FEATURE: raffle.IS_FEATURE || "",
+            PROGRESS: raffle.PROGRESS || "",
+            SHORT_DESCR: raffle.SHORT_DESCR || "",
+            STATUS: raffle.STATUS || "",
+            THUMBNAIL_URL: raffle.THUMBNAIL_URL || "",
+            TICKET_COST: raffle.TICKET_COST || "",
+            TICKET_GOAL: raffle.TICKET_GOAL || "",
+            TICKET_SOLD: raffle.TICKET_SOLD || "",
+            TITLE: raffle.TITLE || "",
+            YT_LIVE: raffle.YT_LIVE || "",
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching raffle:", error);
+      }
+    };
+    getLists();
+    // setFormData({
+    //   itemCode: "RAFFLE123",
+    //   DESCR1: "",
+    //   DESCR2: "",
+    //   DESCR3: "",
+    //   DRAW_DT: "",
+    //   FB_LIVE: "",
+    //   IS_FEATURE: "",
+    //   PROGRESS: "",
+    //   SHORT_DESCR: "",
+    //   STATUS: "",
+    //   THUMBNAIL_URL: "",
+    //   TICKET_COST: "",
+    //   TICKET_GOAL: "",
+    //   TICKET_SOLD: "",
+    //   TITLE: "",
+    //   YT_LIVE: "",
+    // });
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -104,27 +156,27 @@ const RaffleEdit = ({ id }) => {
         showAlert("Invalid date format. Use YYYY-MM-DD.", "error");
       } else {
         showAlert(
-          "Your raffle has been successfully registered. You can now view it in the Raffle Lists tab.",
+          "Your raffle has been successfully updated. You can now view it in the Raffle Lists tab.",
           "success"
         );
-        setFormData({
-          itemCode: id,
-          DESCR1: "",
-          DESCR2: "",
-          DESCR3: "",
-          DRAW_DT: "",
-          FB_LIVE: "",
-          IS_FEATURE: "",
-          PROGRESS: "",
-          SHORT_DESCR: "",
-          STATUS: "",
-          THUMBNAIL_URL: "",
-          TICKET_COST: "",
-          TICKET_GOAL: "",
-          TICKET_SOLD: "",
-          TITLE: "",
-          YT_LIVE: "",
-        });
+        // setFormData({
+        //   itemCode: id,
+        //   DESCR1: "",
+        //   DESCR2: "",
+        //   DESCR3: "",
+        //   DRAW_DT: "",
+        //   FB_LIVE: "",
+        //   IS_FEATURE: "",
+        //   PROGRESS: "",
+        //   SHORT_DESCR: "",
+        //   STATUS: "",
+        //   THUMBNAIL_URL: "",
+        //   TICKET_COST: "",
+        //   TICKET_GOAL: "",
+        //   TICKET_SOLD: "",
+        //   TITLE: "",
+        //   YT_LIVE: "",
+        // });
         setLoading(false);
       }
     } catch (error) {
@@ -145,9 +197,9 @@ const RaffleEdit = ({ id }) => {
             data-aos-duration={800}
             data-aos-delay={300}
           >
-            Raffle Edit: {id}
+            RaffleID: {id}
           </h5>
-          <h2 className="title text-anime-style-3">Raffle Register</h2>
+          <h2 className="title text-anime-style-3">Raffle Editing</h2>
         </div>
         <div
           className="vl-gallery-btn text-end"
@@ -169,7 +221,7 @@ const RaffleEdit = ({ id }) => {
                         name="itemCode"
                         value={formData.itemCode}
                         onChange={handleChange}
-                        required
+                        readOnly
                       />
                     </Col>
                     <Col lg={4}>
@@ -345,7 +397,7 @@ const RaffleEdit = ({ id }) => {
                             </>
                           ) : (
                             <>
-                              Register{" "}
+                              Update Raffle{" "}
                               <span>
                                 <FaArrowRight />
                               </span>
