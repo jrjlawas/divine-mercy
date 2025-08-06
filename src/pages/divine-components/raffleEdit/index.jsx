@@ -5,7 +5,7 @@ import Select from "react-select";
 
 import { registerRaffle } from "../../../api/rafflesRegister";
 
-const RaffleRegister = () => {
+const RaffleEdit = ({ id }) => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({ visible: false, message: "", type: "" });
   const showAlert = (message, type = "success") => {
@@ -88,7 +88,6 @@ const RaffleRegister = () => {
 
     setFormData(updatedForm);
   };
-
   const handleSubmit = async () => {
     try {
       setLoading(true);
@@ -109,7 +108,7 @@ const RaffleRegister = () => {
           "success"
         );
         setFormData({
-          itemCode: "",
+          itemCode: id,
           DESCR1: "",
           DESCR2: "",
           DESCR3: "",
@@ -146,7 +145,7 @@ const RaffleRegister = () => {
             data-aos-duration={800}
             data-aos-delay={300}
           >
-            Raffle Manager
+            Raffle Edit: {id}
           </h5>
           <h2 className="title text-anime-style-3">Raffle Register</h2>
         </div>
@@ -366,4 +365,4 @@ const RaffleRegister = () => {
   );
 };
 
-export default RaffleRegister;
+export default RaffleEdit;

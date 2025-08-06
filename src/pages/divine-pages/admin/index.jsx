@@ -8,9 +8,12 @@ import Footer from "../../divine-components/footer";
 import BackToTop from "@/components/BackToTop.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import RaffleEdit from "../../divine-components/raffleEdit";
 
 const AdminPage = () => {
   const [activeSection, setActiveSection] = useState("list");
+  const [selectedRaffleId, setSelectedRaffleId] = useState(null);
+
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   useEffect(() => {
@@ -33,13 +36,20 @@ const AdminPage = () => {
     sessionStorage.setItem("activeSection", section);
   };
 
+  const handleEditClick = (raffleId) => {
+    setSelectedRaffleId(raffleId);
+    setActiveSection("edit");
+  };
+
   const renderBodyComponent = () => {
     switch (activeSection) {
       case "register":
         return <RaffleRegister />;
+      case "edit":
+        return <RaffleEdit id={selectedRaffleId} />;
       case "list":
       default:
-        return <RaffleLists />;
+        return <RaffleLists onEditClick={handleEditClick} />;
     }
   };
 

@@ -55,13 +55,13 @@ const Footer = () => {
                     <a href="/raffle">Raffle Fundraiser</a>
                   </li>
                   <li>
-                    <a href="/contact">PPC-PFC</a>
-                  </li>
-                  <li>
                     <a href="/church-construction">Church Construction</a>
                   </li>
                   <li>
                     <a href="/contact">Sagrada Familia Slurs</a>
+                  </li>
+                  <li>
+                    <a href="/contact">Youth Ministry</a>
                   </li>
                 </ul>
               </div>
@@ -136,7 +136,10 @@ const Footer = () => {
           <Row>
             <Col md={6}>
               <p className="vl-copyright-text">
-                © 2025 Glotti Business Solutions. All Rights Reserved.
+                © 2025 <span style={{ color: "#F47C00" }}>Glotti</span>{" "}
+                <span style={{ color: "#0066CC" }}>Business Solutions</span>.
+                All Rights Reserved.
+                {/* © 2025 Glotti Business Solutions. All Rights Reserved. */}
               </p>
             </Col>
             <Col md={6}>

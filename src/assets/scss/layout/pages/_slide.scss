@@ -1872,14 +1872,14 @@ a.header-btn1.testimonial-btn4.testibtn4:hover {
   position: relative;
   display: block;
   height: 100%;
-  width: 90%;
+  // width: 90%;
   border-radius: 6px;
   background: var(--ztc-text-text-6);
   animation: progress 0.4s ease-in-out forwards;
   opacity: 0;
 }
 .skill-progress .skill-box .skill-bar .skill-per.html {
-  width: 16%;
+  // width: 1%;
   animation-delay: 0.4s;
 }
 .skill-progress .skill-box .skill-bar .skill-per-2 {
