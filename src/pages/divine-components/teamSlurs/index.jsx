@@ -142,7 +142,7 @@ const TeamSlurs = () => {
                   </ul>
                 </div> */}
                 <div className="vl-team-content text-center">
-                  <Link to="/pages/team" className="title">
+                  <Link to="#" className="title">
                     {item.name}
                   </Link>
                   <span>{item.role}</span>
