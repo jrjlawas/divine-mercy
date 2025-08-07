@@ -1,6 +1,4 @@
 import { useRef } from "react";
-import hero1 from "@/assets/img/shape/vl-hero-shape-1.1.png";
-import hero2 from "@/assets/img/shape/vl-hero-shape-1.2.png";
 import titleIcon from "@/assets/img/icons/vl-sub-title-icon.svg";
 import {
   FaAngleLeft,
@@ -10,9 +8,10 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "react-slick";
+import GlightBox from "@/components/GlightBox";
+
 const Hero = () => {
   const settings = {
     draggable: true,
@@ -50,13 +49,34 @@ const Hero = () => {
                     Support the construction of Divine Mercy Church and help us
                     nurture a place for prayer, worship, and community life.
                   </p>
-                  <div className="vl-hero-btn">
+                  {/* <div className="vl-hero-btn">
                     <a href="/contact" className="header-btn1">
-                      Join The Effort{" "}
+                      Learn More{" "}
                       <span>
                         <FaArrowRight />
                       </span>
                     </a>
+                  </div> */}
+
+                  <div className="vl-video-play">
+                    <a
+                      href="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FDivineMercyMSLibertad%2Fvideos%2F1189491445884303%2F&show_text=false&width=560&t=0"
+                      className="glightbox video-play-button video popup-video"
+                      tabIndex={-1}
+                    >
+                      <span />
+                    </a>
+                    <div className="video-text">
+                      <h6 className="vtitle video">
+                        <a
+                          className="glightbox vtitle video popup-video"
+                          href="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FDivineMercyMSLibertad%2Fvideos%2F1189491445884303%2F&show_text=false&width=560&t=0"
+                          tabIndex={-1}
+                        >
+                          Learn More
+                        </a>
+                      </h6>
+                    </div>
                   </div>
                 </div>
               </Col>

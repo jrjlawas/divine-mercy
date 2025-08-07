@@ -60,6 +60,10 @@ const SingleMobileMenu = () => {
               <a href="/church-construction">Church Construction</a>
             </li>
             <li>
+              <a href="/sagrada-slurs">Sagrada Familia Slurs</a>
+            </li>
+
+            <li>
               <a href="/contact">Contact Us</a>
             </li>
           </ul>

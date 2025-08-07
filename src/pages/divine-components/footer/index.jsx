@@ -58,7 +58,7 @@ const Footer = () => {
                     <a href="/church-construction">Church Construction</a>
                   </li>
                   <li>
-                    <a href="/contact">Sagrada Familia Slurs</a>
+                    <a href="/sagrada-slurs">Sagrada Familia Slurs</a>
                   </li>
                   <li>
                     <a href="/contact">Youth Ministry</a>
