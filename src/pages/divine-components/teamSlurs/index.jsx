@@ -14,6 +14,7 @@ import team4 from "@/assets/img/divine-img/slurs/team4.png";
 import team5 from "@/assets/img/divine-img/slurs/team5.png";
 import team6 from "@/assets/img/divine-img/slurs/team6.png";
 import team7 from "@/assets/img/divine-img/slurs/team7.png";
+import team8 from "@/assets/img/divine-img/slurs/team8.png";
 
 const TeamSlurs = () => {
   const teamData = [
@@ -47,11 +48,16 @@ const TeamSlurs = () => {
       role: "Member",
       image: team6,
     },
-    // {
-    //   name: "Juging",
-    //   role: "Member",
-    //   image: team7,
-    // },
+    {
+      name: "Mat",
+      role: "Member",
+      image: team7,
+    },
+    {
+      name: "Kim",
+      role: "Member",
+      image: team8,
+    },
   ];
   return (
     <section className="vl-team-bg-1 sp1">

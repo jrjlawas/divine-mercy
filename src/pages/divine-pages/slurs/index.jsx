@@ -2,6 +2,7 @@ import Header from "../../divine-components/header";
 import HeroSlurs from "../../divine-components/heroSlurs";
 import AboutSlurs from "../../divine-components/aboutSlurs";
 import TeamSlurs from "../../divine-components/teamSlurs";
+import GallerySlurs from "../../divine-components/gallerySlurs";
 import Contact from "../../divine-components/contact/components/Contact";
 import CtaArea from "../../divine-components/cta";
 import Footer from "../../divine-components/footer";
@@ -14,6 +15,7 @@ const Slurs = () => {
       <HeroSlurs />
       <AboutSlurs />
       <TeamSlurs />
+      <GallerySlurs />
       <Contact />
       <CtaArea />
       <Footer />

@@ -98,7 +98,7 @@ const RaffleLists = ({ onEditClick }) => {
                             <div className="skill-vlue">
                               <div className="num1">
                                 <span>Sold: </span>
-                                {raffle.PROGRESS}
+                                {raffle.TICKET_SOLD}
                               </div>
                               <div className="num1">
                                 <span>Goal: </span>
