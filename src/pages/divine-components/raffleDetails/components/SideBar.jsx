@@ -2,24 +2,85 @@ import thumbImg from "@/assets/img/divine-img/raffle/raffle1.jpg";
 import { createGcashSource } from "../../../../api/gcash-payment";
 import customImg from "@/assets/img/icons/custom-amou.svg";
 import dollarImg from "@/assets/img/icons/dollar.svg";
-
+import DefaultImg from "@/assets/img/divine-img/raffle/ticket.png";
 import CountDown from "../../functions/countDown";
 import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { Col, Container, Row } from "react-bootstrap";
+import { getRaffleLists } from "../../../../api/rafflesList";
+import RaffleGallery from "../../../divine-components/raffleGallery";
 
-const SideBar = () => {
+const SideBar = ({ raffleId }) => {
   const prices = [10, 20, 30, 40, 50];
   const [value, setValue] = useState(10);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({ visible: false, message: "", type: "" });
+  const [formData, setFormData] = useState({
+    itemCode: "",
+    DESCR1: "",
+    DESCR2: "",
+    DESCR3: "",
+    DRAW_DT: "",
+    FB_LIVE: "",
+    IS_FEATURE: "",
+    PROGRESS: "",
+    SHORT_DESCR: "",
+    STATUS: "",
+    THUMBNAIL_URL: "",
+    TICKET_COST: "",
+    TICKET_GOAL: "",
+    TICKET_SOLD: "",
+    TITLE: "",
+    YT_LIVE: "",
+    GALLERY1: "",
+    GALLERY2: "",
+    GALLERY3: "",
+    GALLERY4: "",
+    GALLERY5: "",
+    GALLERY6: "",
+  });
+
+  useEffect(() => {
+    const getLists = async () => {
+      try {
+        const data = await getRaffleLists();
+        const raffle = data.find((r) => r.itemCode === raffleId);
+        setFormData({
+          itemCode: raffleId,
+          DESCR1: raffle.DESCR1 || "",
+          DESCR2: raffle.DESCR2 || "",
+          DESCR3: raffle.DESCR3 || "",
+          DRAW_DT: raffle.DRAW_DT || "",
+          FB_LIVE: raffle.FB_LIVE || "",
+          IS_FEATURE: raffle.IS_FEATURE || "",
+          PROGRESS: raffle.PROGRESS || "",
+          SHORT_DESCR: raffle.SHORT_DESCR || "",
+          STATUS: raffle.STATUS || "",
+          THUMBNAIL_URL: raffle.THUMBNAIL_URL || "",
+          TICKET_COST: raffle.TICKET_COST || "",
+          TICKET_GOAL: raffle.TICKET_GOAL || "",
+          TICKET_SOLD: raffle.TICKET_SOLD || "",
+          TITLE: raffle.TITLE || "",
+          YT_LIVE: raffle.YT_LIVE || "",
+          GALLERY1: raffle.GALLERY1 || "",
+          GALLERY2: raffle.GALLERY2 || "",
+          GALLERY3: raffle.GALLERY3 || "",
+          GALLERY4: raffle.GALLERY4 || "",
+          GALLERY5: raffle.GALLERY5 || "",
+          GALLERY6: raffle.GALLERY6 || "",
+        });
+      } catch (error) {
+        console.error("Error fetching raffle:", error);
+      }
+    };
+    getLists();
+  }, []);
 
   //Toast Alert Functionality
   const showAlert = (message, type = "success") => {
     setAlert({ visible: true, message, type });
     // setTimeout(() => setAlert({ visible: false, message: "", type: "" }), 5000);
   };
-
   //Countdown Functionality
   const targetDate = "2025-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
@@ -83,7 +144,9 @@ const SideBar = () => {
               <div className="vl-large-thumb">
                 <img
                   className="w-100 img-fluid"
-                  src={thumbImg}
+                  src={
+                    formData.THUMBNAIL_URL ? formData.THUMBNAIL_URL : DefaultImg
+                  }
                   alt="thumbImg"
                 />
               </div>
@@ -92,16 +155,27 @@ const SideBar = () => {
                   <div className="skill-progress">
                     <div className="skill-box">
                       <div className="skill-bar">
-                        <span className="skill-per html">
-                          <span className="tooltipp">16%</span>
+                        <span
+                          className="skill-per html"
+                          style={{
+                            width: `${parseFloat(formData.PROGRESS)}%`,
+                            // height: `${parseFloat(raffle.PROGRESS)}%`,
+                            // opacity: 1,
+                          }}
+                        >
+                          {/* <span className="tooltipp">
+                            {parseFloat(formData.PROGRESS)}%
+                          </span> */}
                         </span>
                       </div>
                       <div className="skill-vlue">
                         <div className="num1">
-                          <span>Tickets Sold: </span>26,000
+                          <span>Tickets Sold: </span>
+                          {formData.TICKET_SOLD}
                         </div>
                         <div className="num1">
-                          <span>Goal: </span>90,000
+                          <span>Goal: </span>
+                          {formData.TICKET_GOAL}
                         </div>
                       </div>
                     </div>
@@ -117,7 +191,11 @@ const SideBar = () => {
                 </Row>
                 <div className="donate-form">
                   <div className="select-method">
-                    <h4 className="title pb-32">Billing Details</h4>
+                    <h4 className="title pb-32">
+                      “Coming soon! Divine Mercy Church raffle tickets will be
+                      available shortly — thank you for your support.”
+                    </h4>
+                    {/* <h4 className="title pb-32">Billing Details</h4>
                     <form action="#">
                       <Row>
                         <Col lg={6} md={6} className="mb-20">
@@ -220,18 +298,13 @@ const SideBar = () => {
                           )}
                         </Col>
                       </Row>
-                    </form>
+                    </form> */}
                   </div>
 
-                  <div className="total-anoumt">
+                  {/* <div className="total-anoumt">
                     <div className="toal">
                       <div className="btn-area">
                         <button className="header-btn1" onClick={handlePay}>
-                          {/* Pay Ticket{" "}
-                          <span>
-                            <FaArrowRight />
-                          </span> */}
-
                           {loading ? (
                             <>
                               Loading
@@ -249,31 +322,21 @@ const SideBar = () => {
                       </div>
                     </div>
                     <div className="content">
-                      <h2 className="title">Total: Php 300.00</h2>
+                      <h2 className="title">
+                        Total: Php {formData.TICKET_COST}
+                      </h2>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
             <div className="event-content-area">
-              <h2 className="title pt-5">Jeep 4x4 – Fully Customized</h2>
-              <p className="para">
-                This isn't just a vehicle—it's a statement. The Fully Customized
-                Jeep 4x4 is built for performance, comfort, and adventure. With
-                rugged durability and head-turning style, this off-road beast is
-                perfect for both the wild outdoors and city cruising. Whether
-                you're tackling muddy trails or heading to Sunday Mass, this
-                ride can do it all.
-              </p>
-              <h2 className="title pt-5">Why It Matters</h2>
-              <p className="para">
-                Every raffle ticket you purchase doesn’t just bring you closer
-                to driving away with this incredible vehicle—it also helps build
-                a house of worship for our community. 100% of the proceeds from
-                this raffle will go directly to the ongoing construction of
-                Divine Mercy Church in Barangay Libertad, Ormoc City, Leyte,
-                Philippines.
-              </p>
+              <h2 className="title pt-5">
+                [{formData.itemCode}]: {formData.TITLE}
+              </h2>
+              <p className="para">{formData.DESCR1}</p>
+              <h2 className="title pt-5">Raffle Mechanics</h2>
+              <p className="para">{formData.DESCR2}</p>
               <h2 className="title pt-5">
                 Make a Difference With Every Ticket
               </h2>
@@ -286,6 +349,8 @@ const SideBar = () => {
               </p>
             </div>
           </Col>
+
+          <RaffleGallery formData={formData} />
         </Row>
       </Container>
     </div>

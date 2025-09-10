@@ -4,12 +4,13 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router";
 import TruncatedParagraph from "../../functions/wordLimiter";
 import Countdown from "../../functions/countDownv2";
-
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { getRaffleLists } from "../../../../api/rafflesList";
 import DefaultImg from "@/assets/img/divine-img/raffle/ticket.png";
 
 const Causes = () => {
+  const navigate = useNavigate();
   // const targetDate = "2025-12-25T18:00:00";
   // const timeLeft = CountDown(targetDate);
   // if (!timeLeft) {
@@ -31,8 +32,11 @@ const Causes = () => {
   }, []);
 
   const BuyTicketPage = (id) => {
-    console.log("Raffle ID from URL:", id);
-    alert(" Ticket sales for this raffle haven't started yet.");
+    // /raffle-details
+    navigate(`/raffle-details/${id}`);
+
+    // console.log("Raffle ID from URL:", id);
+    // alert(" Ticket sales for this raffle haven't started yet.");
   };
 
   return (
@@ -99,9 +103,9 @@ const Causes = () => {
                                   // opacity: 1,
                                 }}
                               >
-                                <span className="tooltipp">
+                                {/* <span className="tooltipp">
                                   {parseFloat(raffle.PROGRESS)}%
-                                </span>
+                                </span> */}
                               </span>
                             </div>
                             <div className="skill-vlue">
@@ -125,7 +129,19 @@ const Causes = () => {
                         }}
                         className="badge mt-32"
                       >
-                        Draw Date: <Countdown targetDate={raffle.DRAW_DT} />
+                        {/* Draw Date: <Countdown targetDate={raffle.DRAW_DT} /> */}
+                        {raffle.STATUS === "Drawing" ? (
+                          "Draw In-Progress"
+                        ) : raffle.STATUS === "Drawed" ? (
+                          "Draw Completed"
+                        ) : new Date(raffle.DRAW_DT) <= new Date() &&
+                          raffle.STATUS === "Active" ? (
+                          "Awaiting Draw"
+                        ) : (
+                          <>
+                            Draw Date: <Countdown targetDate={raffle.DRAW_DT} />
+                          </>
+                        )}
                       </a>
                       <h3 className="title">
                         <Link

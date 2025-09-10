@@ -1,32 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { FaArrowRight } from "react-icons/fa6";
-import Select from "react-select";
-const options = [
-  {
-    value: "",
-    label: "Donation To",
-  },
-  {
-    value: 1,
-    label: "Health and Medical Support",
-  },
-  {
-    value: 2,
-    label: "Education and Training",
-  },
-  {
-    value: 3,
-    label: "Relief and Aid Services",
-  },
-  {
-    value: 4,
-    label: "Community Development",
-  },
-  {
-    value: 5,
-    label: "Environmental Conservation",
-  },
-];
+
 const Contact = () => {
   return (
     <section className="vl-contact-section-inner sp2">

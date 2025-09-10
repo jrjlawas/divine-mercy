@@ -103,7 +103,7 @@ const singlePageRoutes = [
     element: <DivineRaffle />,
   },
   {
-    path: "/raffle-details",
+    path: "/raffle-details/:id",
     name: "multi-page-raffle-details",
     element: <DivineRaffleDetails />,
   },

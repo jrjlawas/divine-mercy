@@ -56,6 +56,12 @@ const RaffleRegister = () => {
     TICKET_SOLD: "",
     TITLE: "",
     YT_LIVE: "",
+    GALLERY1: "",
+    GALLERY2: "",
+    GALLERY3: "",
+    GALLERY4: "",
+    GALLERY5: "",
+    GALLERY6: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -125,6 +131,12 @@ const RaffleRegister = () => {
           TICKET_SOLD: "",
           TITLE: "",
           YT_LIVE: "",
+          GALLERY1: "",
+          GALLERY2: "",
+          GALLERY3: "",
+          GALLERY4: "",
+          GALLERY5: "",
+          GALLERY6: "",
         });
         setLoading(false);
       }
@@ -324,13 +336,66 @@ const RaffleRegister = () => {
                       />
                     </Col>
                     <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery1"
+                        name="GALLERY1"
+                        value={formData.GALLERY1}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery2"
+                        name="GALLERY2"
+                        value={formData.GALLERY2}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery3"
+                        name="GALLERY3"
+                        value={formData.GALLERY3}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery4"
+                        name="GALLERY4"
+                        value={formData.GALLERY4}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery5"
+                        name="GALLERY5"
+                        value={formData.GALLERY5}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery6"
+                        name="GALLERY6"
+                        value={formData.GALLERY6}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
                       {alert.visible && (
                         <div className={`alert-box ${alert.type}`}>
                           {alert.message}
                         </div>
                       )}
                     </Col>
-
                     <Col lg={12}>
                       <br></br>
                       <div className="btn-area">

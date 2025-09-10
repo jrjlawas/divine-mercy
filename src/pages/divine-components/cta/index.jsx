@@ -23,7 +23,7 @@ const CtaArea = () => {
                   Your support—big or small—can lay the very foundations of
                   hope, healing, and faith for generations to come.
                 </p>
-                <div className="vl-cta-form text-center mx-auto">
+                {/* <div className="vl-cta-form text-center mx-auto">
                   <form action="#">
                     <input type="email" placeholder="Enter Your Email.." />
                     <div className="btn-area vl-cta-btn1">
@@ -35,7 +35,7 @@ const CtaArea = () => {
                       </button>
                     </div>
                   </form>
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>

@@ -61,15 +61,15 @@ const About = () => {
                   </div>
                 </div> */}
                 <div className="vl-about-icon-box mb-30">
-                  <div className="vl-about-icon">
+                  {/* <div className="vl-about-icon">
                     <span>
                       <img src={aboutIcons2} alt="about2" />
                     </span>
-                  </div>
+                  </div> */}
                   <div className="vl-icon-content">
                     <h3 className="title">
-                      <Link to="/contact">
-                        Putting Faith and Community at the Heart of All We Build
+                      <Link to="#">
+                        Building with Faith and Community at Heart
                       </Link>
                     </h3>
                     <p>

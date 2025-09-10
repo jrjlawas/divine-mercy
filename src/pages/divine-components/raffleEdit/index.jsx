@@ -12,6 +12,7 @@ const RaffleEdit = ({ id }) => {
   const showAlert = (message, type = "success") => {
     setAlert({ visible: true, message, type });
   };
+
   const optionsStatus = [
     {
       value: "Inactive",
@@ -57,6 +58,12 @@ const RaffleEdit = ({ id }) => {
     TICKET_SOLD: "",
     TITLE: "",
     YT_LIVE: "",
+    GALLERY1: "",
+    GALLERY2: "",
+    GALLERY3: "",
+    GALLERY4: "",
+    GALLERY5: "",
+    GALLERY6: "",
   });
 
   useEffect(() => {
@@ -70,7 +77,7 @@ const RaffleEdit = ({ id }) => {
             DESCR1: raffle.DESCR1 || "",
             DESCR2: raffle.DESCR2 || "",
             DESCR3: raffle.DESCR3 || "",
-            DRAW_DT: raffle.DRAW_DT || "",
+            DRAW_DT: raffle.DRAW_DT ? raffle.DRAW_DT.split("T")[0] : "",
             FB_LIVE: raffle.FB_LIVE || "",
             IS_FEATURE: raffle.IS_FEATURE || "",
             PROGRESS: raffle.PROGRESS || "",
@@ -82,6 +89,12 @@ const RaffleEdit = ({ id }) => {
             TICKET_SOLD: raffle.TICKET_SOLD || "",
             TITLE: raffle.TITLE || "",
             YT_LIVE: raffle.YT_LIVE || "",
+            GALLERY1: raffle.GALLERY1 || "",
+            GALLERY2: raffle.GALLERY2 || "",
+            GALLERY3: raffle.GALLERY3 || "",
+            GALLERY4: raffle.GALLERY4 || "",
+            GALLERY5: raffle.GALLERY5 || "",
+            GALLERY6: raffle.GALLERY6 || "",
           });
         }
       } catch (error) {
@@ -374,6 +387,61 @@ const RaffleEdit = ({ id }) => {
                         onChange={handleChange}
                       />
                     </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery1"
+                        name="GALLERY1"
+                        value={formData.GALLERY1}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery2"
+                        name="GALLERY2"
+                        value={formData.GALLERY2}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery3"
+                        name="GALLERY3"
+                        value={formData.GALLERY3}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery4"
+                        name="GALLERY4"
+                        value={formData.GALLERY4}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery5"
+                        name="GALLERY5"
+                        value={formData.GALLERY5}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="Gallery6"
+                        name="GALLERY6"
+                        value={formData.GALLERY6}
+                        onChange={handleChange}
+                      />
+                    </Col>
+
                     <Col lg={12}>
                       {alert.visible && (
                         <div className={`alert-box ${alert.type}`}>

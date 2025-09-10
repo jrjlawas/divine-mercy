@@ -130,7 +130,7 @@ const Gallery = () => {
                 </a>
               </div>
             </Col>
-            <Col lg={6} md={6} className="mb-30">
+            {/* <Col lg={6} md={6} className="mb-30">
               <div
                 className="vl-single-box"
                 data-aos="zoom-in-up"
@@ -144,7 +144,7 @@ const Gallery = () => {
                   </span>
                 </a>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </GlightBox>
       </Container>
