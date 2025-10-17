@@ -1,6 +1,7 @@
 import Header from "../../divine-components/header";
 import Hero from "../../divine-components/hero";
 import About from "../../divine-components/about";
+import RafflesPage from "../../divine-components/raffles/components/Causes";
 import JourneyFirst from "../../divine-components/journeyFirst";
 import JourneySecond from "../../divine-components/journeySecond";
 import JourneyThird from "../../divine-components/journeyThird";
@@ -16,6 +17,7 @@ const Home = () => {
       <Header />
       <Hero />
       <About />
+      <RafflesPage />
       <JourneyFirst />
       <JourneySecond />
       <JourneyThird />

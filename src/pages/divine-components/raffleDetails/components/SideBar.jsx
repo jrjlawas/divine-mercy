@@ -38,6 +38,7 @@ const SideBar = ({ raffleId }) => {
     GALLERY4: "",
     GALLERY5: "",
     GALLERY6: "",
+    QR_PAY: "",
   });
 
   useEffect(() => {
@@ -68,6 +69,7 @@ const SideBar = ({ raffleId }) => {
           GALLERY4: raffle.GALLERY4 || "",
           GALLERY5: raffle.GALLERY5 || "",
           GALLERY6: raffle.GALLERY6 || "",
+          QR_PAY: raffle.QR_PAY || "",
         });
       } catch (error) {
         console.error("Error fetching raffle:", error);
@@ -191,10 +193,19 @@ const SideBar = ({ raffleId }) => {
                 </Row>
                 <div className="donate-form">
                   <div className="select-method">
-                    <h4 className="title pb-32">
-                      “Coming soon! Divine Mercy Church raffle tickets will be
-                      available shortly — thank you for your support.”
-                    </h4>
+                    {formData.QR_PAY ? (
+                      <img
+                        className="w-100 img-fluid"
+                        src={formData.QR_PAY}
+                        alt="thumbImg"
+                      />
+                    ) : (
+                      <h4 className="title pb-32">
+                        QR code payment option coming soon — thank you for
+                        supporting Divine Mercy Church!
+                      </h4>
+                    )}
+
                     {/* <h4 className="title pb-32">Billing Details</h4>
                     <form action="#">
                       <Row>
@@ -301,8 +312,8 @@ const SideBar = ({ raffleId }) => {
                     </form> */}
                   </div>
 
-                  {/* <div className="total-anoumt">
-                    <div className="toal">
+                  <div className="total-anoumt">
+                    {/* <div className="toal">
                       <div className="btn-area">
                         <button className="header-btn1" onClick={handlePay}>
                           {loading ? (
@@ -320,13 +331,13 @@ const SideBar = ({ raffleId }) => {
                           )}
                         </button>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="content">
                       <h2 className="title">
-                        Total: Php {formData.TICKET_COST}
+                        Total: Php {formData.TICKET_COST}.00
                       </h2>
                     </div>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>

@@ -42,6 +42,27 @@ const Causes = () => {
   return (
     <section className="vl-cause-inner sp2">
       <Container>
+        <div className="vl-causes-section-title text-center">
+          <div className="vl-section-title-1 mb-60">
+            <h5
+              className="subtitle"
+              data-aos="fade-up"
+              data-aos-duration={800}
+              data-aos-delay={300}
+            >
+              Raffle Fundraiser
+            </h5>
+            <h2 className="title text-anime-style-3">Win Big, Build Faith</h2>
+            <p
+              data-aos="fade-right"
+              data-aos-duration={800}
+              data-aos-delay={300}
+            >
+              Buy a ticket and join our mission. Your chance to win helps build
+              our church.
+            </p>
+          </div>
+        </div>
         <Row>
           {raffles.length === 0 ? (
             <Col>

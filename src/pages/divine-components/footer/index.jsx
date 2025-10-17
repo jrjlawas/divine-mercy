@@ -145,12 +145,12 @@ const Footer = () => {
             <Col md={6}>
               <div className="vl-copyright-menu">
                 <ul>
-                  <li>
+                  {/* <li>
                     <a href="#">Privacy Policy </a>
                   </li>
                   <li>
                     <a href="#">Terms &amp; Conditions</a>
-                  </li>
+                  </li> */}
                   <li>
                     <a href="/church-login">Admin</a>
                   </li>
