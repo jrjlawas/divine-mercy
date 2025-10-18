@@ -64,6 +64,7 @@ const RaffleEdit = ({ id }) => {
     GALLERY4: "",
     GALLERY5: "",
     GALLERY6: "",
+    QR_PAY: "",
   });
 
   useEffect(() => {
@@ -95,6 +96,7 @@ const RaffleEdit = ({ id }) => {
             GALLERY4: raffle.GALLERY4 || "",
             GALLERY5: raffle.GALLERY5 || "",
             GALLERY6: raffle.GALLERY6 || "",
+            QR_PAY: raffle.QR_PAY || "",
           });
         }
       } catch (error) {
@@ -438,6 +440,15 @@ const RaffleEdit = ({ id }) => {
                         placeholder="Gallery6"
                         name="GALLERY6"
                         value={formData.GALLERY6}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                    <Col lg={12}>
+                      <input
+                        type="text"
+                        placeholder="QR Pay"
+                        name="QR_PAY"
+                        value={formData.QR_PAY}
                         onChange={handleChange}
                       />
                     </Col>
