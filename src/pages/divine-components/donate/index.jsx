@@ -8,7 +8,7 @@ const ContactPage = () => {
     <>
       <Hero />
       <AboutUs />
-      <Qr />
+      {/* <Qr /> */}
       {/* <Contact />
       <IconArea /> */}
     </>
