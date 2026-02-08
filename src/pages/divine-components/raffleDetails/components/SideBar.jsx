@@ -84,7 +84,7 @@ const SideBar = ({ raffleId }) => {
     // setTimeout(() => setAlert({ visible: false, message: "", type: "" }), 5000);
   };
   //Countdown Functionality
-  const targetDate = "2025-12-25T18:00:00";
+  const targetDate = "2026-12-25T18:00:00";
   const formatNumber = (num) => String(num).padStart(2, "0");
   const timeLeft = CountDown(targetDate);
   if (!timeLeft) {
